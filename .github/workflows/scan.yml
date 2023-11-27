@@ -19,12 +19,12 @@ jobs:
       with:
         node-version: 16.19.0
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2.15.1
+      uses: github/codeql-action/init@v2
       with:
         languages: go,javascript
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2.15.1
+      uses: github/codeql-action/autobuild@v2
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2.15.1
+      uses: github/codeql-action/analyze@v2
       with:
         category: "/language:javascript"
