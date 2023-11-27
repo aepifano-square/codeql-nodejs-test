@@ -18,6 +18,12 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 16.19.0
+    - run: |
+        which node
+        node --version
+        export PATH="/tmp/todo:$PATH"
+        which node
+        node --version
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
