@@ -28,9 +28,9 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: go,javascript
-    #- name: Autobuild
-    #  uses: github/codeql-action/autobuild@v2
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-      #with:
-      #  category: "/language:javascript"
+        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.15.3/codeql-bundle-linux64.tar.gz
+    - name: Run codeql database create
+      run: |
+        mkdir -p /tmp/codeql/db
+        /opt/hostedtoolcache/CodeQL/2.15.3/x64/codeql/codeql database create --language=go,javascript --db-cluster--no-run-unnecessary-builds --source-root=. --working-dir=. /tmp/codeql/db
+    
