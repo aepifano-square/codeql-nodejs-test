@@ -8,6 +8,9 @@ on:
 
 jobs:
   scan:
+    strategy:
+      matrix:
+        version: [2.14.4, 2.14.5, 2.14.6, 2.15.0, 2.15.1, 2.15.2, 2.15.3]
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -26,9 +29,9 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: go,javascript
-        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.15.3/codeql-bundle-linux64.tar.gz
+        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v${{ matrix.version }}/codeql-bundle-linux64.tar.gz
     - name: Run codeql database create
       run: |
         mkdir -p /tmp/codeql/db
-        /opt/hostedtoolcache/CodeQL/2.15.3/x64/codeql/codeql database create --language=go,javascript --db-cluster --no-run-unnecessary-builds --source-root=. --working-dir=. /tmp/codeql/db
+        /opt/hostedtoolcache/CodeQL/${{ matrix.version }}/x64/codeql/codeql database create --language=go,javascript --db-cluster --no-run-unnecessary-builds --source-root=. --working-dir=. /tmp/codeql/db
     
