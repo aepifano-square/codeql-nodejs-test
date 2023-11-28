@@ -32,5 +32,5 @@ jobs:
     - name: Run codeql database create
       run: |
         mkdir -p /tmp/codeql/db
-        /opt/hostedtoolcache/CodeQL/2.15.3/x64/codeql/codeql database create --language=go,javascript --db-cluster--no-run-unnecessary-builds --source-root=. --working-dir=. /tmp/codeql/db
+        /opt/hostedtoolcache/CodeQL/2.15.3/x64/codeql/codeql database create --language=go,javascript --db-cluster --no-run-unnecessary-builds --source-root=. --working-dir=. /tmp/codeql/db
     
