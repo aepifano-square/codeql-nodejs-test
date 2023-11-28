@@ -21,9 +21,7 @@ jobs:
     - run: |
         which node
         node --version
-        export PATH="/tmp/todo:$PATH"
-        which node
-        node --version
+        echo $PATH
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
